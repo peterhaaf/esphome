@@ -15,7 +15,7 @@ void EB5000::loop() {
   //}
   char buffer[128];
   while (this->available()) {
-    this->read_array(buffer,this->available())
+    this->read_array(buffer,this->available());
      //ESP_LOGD(TAG, "read: %c %i", this->read(), this->available());
     ESP_LOGD(TAG, "read: %s", buffer); 
   }
