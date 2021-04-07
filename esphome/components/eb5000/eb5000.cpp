@@ -8,12 +8,14 @@ static const char *TAG = "eb5000";
 
 void EB5000::loop() {
   const uint32_t now = millis();
-  if (now - this->last_read_ > 500 && this->available() < 7) {
-    while (this->available())
-      this->read();
-    this->last_read_ = now;
+  //if (now - this->last_read_ > 500 && this->available() < 7) {
+  //  while (this->available())
+  //    this->read();
+  //  this->last_read_ = now;
+  //}
+  while (this->available()) {
+     ESP_LOGD(TAG, "read: %i", this->read());
   }
-  ESP_LOGD(TAG, "read: %i", this->read());
   // PZEM004T packet size is 7 byte
   while (this->available() >= 7) {
     auto resp = *this->read_array<7>();
