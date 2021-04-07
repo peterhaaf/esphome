@@ -20,8 +20,8 @@ from esphome.const import (
 
 DEPENDENCIES = ["uart"]
 
-pzem004t_ns = cg.esphome_ns.namespace("eb5000")
-PZEM004T = pzem004t_ns.class_("EB5000", cg.PollingComponent, uart.UARTDevice)
+eb5000_ns = cg.esphome_ns.namespace("eb5000")
+EB5000 = eb5000_ns.class_("EB5000", cg.PollingComponent, uart.UARTDevice)
 
 CONFIG_SCHEMA = (
     cv.Schema(
