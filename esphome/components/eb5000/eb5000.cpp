@@ -13,7 +13,7 @@ void EB5000::loop() {
   //    this->read();
   //  this->last_read_ = now;
   //}
-  char buffer[128];
+  uint8_t buffer[128];
   while (this->available()) {
     this->read_array(buffer,this->available());
      //ESP_LOGD(TAG, "read: %c %i", this->read(), this->available());
