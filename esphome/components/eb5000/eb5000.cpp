@@ -77,7 +77,7 @@ void EB5000::write_state_(EB5000::EB5000ReadState state) {
 void EB5000::dump_config() {
   ESP_LOGCONFIG(TAG, "EB5000:");
   LOG_SENSOR("", "Voltage", this->voltage_sensor_);
-  
+}  
 
 }  // namespace eb5000
 }  // namespace esphome
