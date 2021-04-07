@@ -13,7 +13,7 @@ void EB5000::loop() {
       this->read();
     this->last_read_ = now;
   }
-  ESP_LOGD(TAG, "EB5000 welcome");
+  ESP_LOGD(TAG, "read: %i", this->available());
   // PZEM004T packet size is 7 byte
   while (this->available() >= 7) {
     auto resp = *this->read_array<7>();
