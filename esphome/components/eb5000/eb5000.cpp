@@ -13,7 +13,7 @@ void EB5000::loop() {
       this->read();
     this->last_read_ = now;
   }
-
+  ESP_LOGD(TAG, "EB5000 welcome");
   // PZEM004T packet size is 7 byte
   while (this->available() >= 7) {
     auto resp = *this->read_array<7>();
@@ -22,12 +22,13 @@ void EB5000::loop() {
     // 1-5: data
     // 6: checksum (sum of other bytes)
     // see https://github.com/olehs/PZEM004T
+    ESP_LOGD(TAG,"array %s",resp);
     uint8_t sum = 0;
     for (int i = 0; i < 6; i++)
       sum += resp[i];
 
     if (sum != resp[6]) {
-      ESP_LOGV(TAG, "EB5000 invalid checksum! 0x%02X != 0x%02X", sum, resp[6]);
+      ESP_LOGD(TAG, "EB5000 invalid checksum! 0x%02X != 0x%02X", sum, resp[6]);
       continue;
     }
 
