@@ -42,15 +42,11 @@ void EB5000::loop() {
         if (this->voltage_sensor_ != nullptr)
           this->voltage_sensor_->publish_state(voltage);
         ESP_LOGD(TAG, "Got Voltage %.1f V", voltage);
+        break;
+      }
 
 
-      case 0xA5:  // Set Power Alarm Response
-      case 0xB0:  // Voltage Request
-      case 0xB1:  // Current Request
-      case 0xB2:  // Active Power Response
-      case 0xB3:  // Energy Request
-      case 0xB4:  // Set Module Address Request
-      case 0xB5:  // Set Power Alarm Request
+
       default:
         break;
     }
