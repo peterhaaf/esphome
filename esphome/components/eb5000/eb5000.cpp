@@ -15,12 +15,12 @@ void EB5000::loop() {
   //}
   uint8_t buffer[128];
   
-    while (this->available()<10) {}
-    this->read_array(buffer,this->available());
-    //ESP_LOGD(TAG, "read: %c %i", this->read(), this->available());
-    buffer[this->available()] = 0;
-    ESP_LOGD(TAG, "read: %s", buffer); 
-  
+    if (this->available()>=10) {
+       this->read_array(buffer,this->available());
+       //ESP_LOGD(TAG, "read: %c %i", this->read(), this->available());
+       buffer[this->available()] = 0;
+       ESP_LOGD(TAG, "read: %s", buffer); 
+    }
   // PZEM004T packet size is 7 byte
   while (this->available() >= 7) {
     auto resp = *this->read_array<7>();
