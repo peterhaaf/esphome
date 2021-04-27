@@ -96,6 +96,7 @@ bool HOT ICACHE_RAM_ATTR DHT::read_sensor_(float *temperature, float *humidity, 
       delayMicroseconds(2000);
     } else {
       delayMicroseconds(1200);
+      ESP_LOGW(TAG, "AM2302");
     }
     this->pin_->pin_mode(INPUT_PULLUP);
     delayMicroseconds(40);
