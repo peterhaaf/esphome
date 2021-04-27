@@ -85,7 +85,7 @@ bool HOT ICACHE_RAM_ATTR DHT::read_sensor_(float *temperature, float *humidity, 
     this->pin_->digital_write(false);
     this->pin_->pin_mode(OUTPUT);
     this->pin_->digital_write(false);
-
+    ESP_LOGW(TAG, "Model check");
     if (this->model_ == DHT_MODEL_DHT11) {
       delayMicroseconds(18000);
     } else if (this->model_ == DHT_MODEL_SI7021) {
