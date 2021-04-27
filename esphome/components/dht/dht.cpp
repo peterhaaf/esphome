@@ -95,8 +95,8 @@ bool HOT ICACHE_RAM_ATTR DHT::read_sensor_(float *temperature, float *humidity, 
     } else if (this->model_ == DHT_MODEL_DHT22_TYPE2) {
       delayMicroseconds(2000);
     } else {
-      delayMicroseconds(400);
-      ESP_LOGW(TAG, "AM2302-04");
+      delayMicroseconds(100);
+      ESP_LOGW(TAG, "AM2302-01");
     }
     this->pin_->pin_mode(INPUT_PULLUP);
     delayMicroseconds(40);
